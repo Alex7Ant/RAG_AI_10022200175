@@ -1,0 +1,36 @@
+{
+  "part": "E",
+  "adversarial_cases": [
+    {
+      "query": "Give the exact 2025 budget policy that removed all taxes on imports.",
+      "rag_answer": "Direct answer: Resetting the Economy for the Ghana We Want 2025 Budget 3 21. That notwithstanding, our youth face an uncertain future with growing unemployment and hopelessness. This suggests that the dividends of democracy, such as economic prosperity and social justice, remain elusive. 22. Mr. Speaker, the choices before us are clear: we can either continue on a path of self- destruction by not confronting the problems or we can embark on a journey of fundamental reforms and transformation —one that resets our economic model, redefines our priorities, honours our social contract and provides opportunities \nEvidence citations: [1]\nUncertainty note: Generated with fallback mode because LLM endpoint was unavailable.",
+      "baseline_answer": "I could not find this in the retrieved context.",
+      "retrieved_top_scores": [
+        0.44467062894633685,
+        0.4381198515756821,
+        0.4364583333333334,
+        0.4300246173863742,
+        0.4126317714010503
+      ],
+      "analysis_note": "Compare factual support and whether unsupported claims are avoided."
+    },
+    {
+      "query": "Which party won every constituency in Ghana according to the election dataset?",
+      "rag_answer": "Direct answer: Resetting the Economy for the Ghana We Want 2025 Budget 5 SECTION 2: GLOBAL ECONOMIC DEVELOPMENTS & OUTLOOK Global Economic Developments & Outlook Growth 40. Mr. Speaker, according to the January 2025 edition of the International Monetary Fund’s (IMF) World Economic Outlook report, the global economy remains on a steady path, though with significant variations across countries. While some economies exhibit resilience, others continue to grapple with macroeconomic and structural challenges. 41. Global GDP growth is predicted to reach 3.2 percent at the end of 2024, down from 3.3 percent in 2023\nEvidence citations: [1]\nUncertainty note: Generated with fallback mode because LLM endpoint was unavailable.",
+      "baseline_answer": "I could not find this in the retrieved context.",
+      "retrieved_top_scores": [
+        0.34121336073247843,
+        0.32001688392947897,
+        0.31908618534295585,
+        0.3172358683937947,
+        0.3009216283525842
+      ],
+      "analysis_note": "Compare factual support and whether unsupported claims are avoided."
+    }
+  ],
+  "evaluation_axes": [
+    "accuracy",
+    "hallucination_rate",
+    "response_consistency"
+  ]
+}

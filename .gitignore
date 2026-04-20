@@ -1,0 +1,24 @@
+# Python cache and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment files
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Generated outputs
+artifacts/logs/
+
+# Optional local datasets (re-downloaded via scripts/download_datasets.py)
+data/raw/

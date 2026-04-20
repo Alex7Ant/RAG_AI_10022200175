@@ -1,0 +1,261 @@
+{
+  "part": "B",
+  "top_k": 5,
+  "default_hybrid_alpha": 0.75,
+  "queries": [
+    {
+      "query": "Summarize election outcomes by region.",
+      "default": [
+        {
+          "chunk_id": "chunk_23",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.3803194146278325,
+          "keyword_score": 0.2,
+          "final_score": 0.3352395609708743
+        },
+        {
+          "chunk_id": "chunk_241",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.35000000000000003,
+          "keyword_score": 0.2,
+          "final_score": 0.3125
+        },
+        {
+          "chunk_id": "chunk_18",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.34426518632954817,
+          "keyword_score": 0.2,
+          "final_score": 0.3081988897471611
+        },
+        {
+          "chunk_id": "chunk_557",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.34426518632954817,
+          "keyword_score": 0.2,
+          "final_score": 0.3081988897471611
+        },
+        {
+          "chunk_id": "chunk_416",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.3426241444320965,
+          "keyword_score": 0.2,
+          "final_score": 0.30696810832407234
+        }
+      ],
+      "tuned_alpha_0_5": [
+        {
+          "chunk_id": "chunk_23",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.3803194146278325,
+          "keyword_score": 0.2,
+          "final_score": 0.29015970731391627
+        },
+        {
+          "chunk_id": "chunk_241",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.35000000000000003,
+          "keyword_score": 0.2,
+          "final_score": 0.275
+        },
+        {
+          "chunk_id": "chunk_18",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.34426518632954817,
+          "keyword_score": 0.2,
+          "final_score": 0.2721325931647741
+        },
+        {
+          "chunk_id": "chunk_557",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.34426518632954817,
+          "keyword_score": 0.2,
+          "final_score": 0.2721325931647741
+        },
+        {
+          "chunk_id": "chunk_416",
+          "source": "data\\raw\\Ghana_Election_Result.csv",
+          "vector_score": 0.3426241444320965,
+          "keyword_score": 0.2,
+          "final_score": 0.27131207221604825
+        }
+      ]
+    },
+    {
+      "query": "What fiscal priorities are in the 2025 budget statement?",
+      "default": [
+        {
+          "chunk_id": "chunk_635",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.402343247517706,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.46842410230494613
+        },
+        {
+          "chunk_id": "chunk_630",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.3485483377884629,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.4280779200080138
+        },
+        {
+          "chunk_id": "chunk_648",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.37075720465819095,
+          "keyword_score": 0.5555555555555556,
+          "final_score": 0.4169567923825321
+        },
+        {
+          "chunk_id": "chunk_645",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.3309241228937004,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.4148597588369419
+        },
+        {
+          "chunk_id": "chunk_633",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.30969830294139616,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.39894039387271374
+        }
+      ],
+      "tuned_alpha_0_5": [
+        {
+          "chunk_id": "chunk_635",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.402343247517706,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.5345049570921863
+        },
+        {
+          "chunk_id": "chunk_630",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.3485483377884629,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.5076075022275648
+        },
+        {
+          "chunk_id": "chunk_645",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.3309241228937004,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.49879539478018353
+        },
+        {
+          "chunk_id": "chunk_633",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.30969830294139616,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.48818248480403137
+        },
+        {
+          "chunk_id": "chunk_631",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.29381919986704924,
+          "keyword_score": 0.6666666666666666,
+          "final_score": 0.48024293326685796
+        }
+      ]
+    },
+    {
+      "query": "Tell me how cocoa exports changed in this dataset.",
+      "default": [
+        {
+          "chunk_id": "chunk_645",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.1860213617107082,
+          "keyword_score": 0.3333333333333333,
+          "final_score": 0.22284935461636446
+        },
+        {
+          "chunk_id": "chunk_626",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.14253867741606657,
+          "keyword_score": 0.4444444444444444,
+          "final_score": 0.21801511917316102
+        },
+        {
+          "chunk_id": "chunk_627",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.1667534496283749,
+          "keyword_score": 0.3333333333333333,
+          "final_score": 0.2083984205546145
+        },
+        {
+          "chunk_id": "chunk_641",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.20191985622510353,
+          "keyword_score": 0.2222222222222222,
+          "final_score": 0.2069954477243832
+        },
+        {
+          "chunk_id": "chunk_633",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.17381774143080428,
+          "keyword_score": 0.2222222222222222,
+          "final_score": 0.18591886162865875
+        }
+      ],
+      "tuned_alpha_0_5": [
+        {
+          "chunk_id": "chunk_626",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.14253867741606657,
+          "keyword_score": 0.4444444444444444,
+          "final_score": 0.2934915609302555
+        },
+        {
+          "chunk_id": "chunk_645",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.1860213617107082,
+          "keyword_score": 0.3333333333333333,
+          "final_score": 0.25967734752202076
+        },
+        {
+          "chunk_id": "chunk_627",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.1667534496283749,
+          "keyword_score": 0.3333333333333333,
+          "final_score": 0.2500433914808541
+        },
+        {
+          "chunk_id": "chunk_641",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.20191985622510353,
+          "keyword_score": 0.2222222222222222,
+          "final_score": 0.21207103922366288
+        },
+        {
+          "chunk_id": "chunk_633",
+          "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+          "vector_score": 0.17381774143080428,
+          "keyword_score": 0.2222222222222222,
+          "final_score": 0.19801998182651326
+        }
+      ]
+    }
+  ],
+  "failure_case": {
+    "query": "Tell me how cocoa exports changed in this dataset.",
+    "issue": "Potentially irrelevant retrieval when domain terms are missing from source data.",
+    "fix_applied": "Adjusted hybrid_alpha from default to 0.5 to increase lexical influence.",
+    "before_top_result": [
+      {
+        "chunk_id": "chunk_645",
+        "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+        "vector_score": 0.1860213617107082,
+        "keyword_score": 0.3333333333333333,
+        "final_score": 0.22284935461636446
+      }
+    ],
+    "after_top_result": [
+      {
+        "chunk_id": "chunk_626",
+        "source": "data\\raw\\2025-Budget-Statement-and-Economic-Policy_v4.pdf",
+        "vector_score": 0.14253867741606657,
+        "keyword_score": 0.4444444444444444,
+        "final_score": 0.2934915609302555
+      }
+    ]
+  }
+}

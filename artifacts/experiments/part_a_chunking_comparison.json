@@ -1,0 +1,23 @@
+{
+  "strategy_fixed": {
+    "chunk_count": 664,
+    "avg_chunk_characters": 312.60843373493975,
+    "mean_query_keyword_coverage": 0.5509259259259259,
+    "query_scores": {
+      "What were election outcomes by region?": 0.5,
+      "What are the major fiscal priorities in the 2025 budget?": 0.7777777777777778,
+      "Which trends appear in constituency level election data?": 0.375
+    }
+  },
+  "strategy_sentence": {
+    "chunk_count": 1631,
+    "avg_chunk_characters": 176.41692213366034,
+    "mean_query_keyword_coverage": 0.47685185185185186,
+    "query_scores": {
+      "What were election outcomes by region?": 0.5,
+      "What are the major fiscal priorities in the 2025 budget?": 0.5555555555555556,
+      "Which trends appear in constituency level election data?": 0.375
+    }
+  },
+  "recommendation": "Choose fixed chunks if precision and local context continuity are better in your manual checks; choose sentence chunks if interpretability and coherence are better."
+}

@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-04-20T22:36:53.617330Z",
+  "strategy": "fixed",
+  "chunk_count": 664,
+  "avg_chunk_chars": 312.60843373493975,
+  "chunk_size": 900,
+  "chunk_overlap": 120
+}
