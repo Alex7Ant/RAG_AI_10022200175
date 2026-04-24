@@ -10,6 +10,72 @@ def _token_set(text: str) -> set:
     return {t.strip(".,:;!?()[]{}\"'").lower() for t in text.split() if t.strip()}
 
 
+ELECTION_TERMS = {
+    "election",
+    "electoral",
+    "vote",
+    "votes",
+    "voter",
+    "voters",
+    "candidate",
+    "candidates",
+    "party",
+    "parties",
+    "constituency",
+    "constituencies",
+    "region",
+    "regions",
+    "district",
+    "districts",
+    "poll",
+    "polling",
+    "results",
+    "winner",
+    "winners",
+    "npp",
+    "ndc",
+    "cpp",
+    "pnc",
+    "lpg",
+    "gum",
+    "gcpp",
+    "ndp",
+}
+
+BUDGET_TERMS = {
+    "budget",
+    "fiscal",
+    "revenue",
+    "tax",
+    "taxes",
+    "expenditure",
+    "expenditures",
+    "debt",
+    "inflation",
+    "economy",
+    "economic",
+    "policy",
+    "policies",
+    "sona",
+    "address",
+    "government",
+    "minister",
+    "ministry",
+}
+
+
+def _query_domain(query: str) -> str:
+    terms = _token_set(query)
+    election_hits = terms.intersection(ELECTION_TERMS)
+    budget_hits = terms.intersection(BUDGET_TERMS)
+
+    if election_hits and not budget_hits:
+        return "election"
+    if budget_hits and not election_hits:
+        return "budget"
+    return "mixed"
+
+
 def keyword_overlap_score(query: str, passage: str) -> float:
     q = _token_set(query)
     p = _token_set(passage)
@@ -46,15 +112,40 @@ def retrieve(
     expanded = expand_query(query)
     query_vec = embedder.encode([expanded])
 
-    vec_scores, ids = search_index(index, query_vec, top_k=top_k * 3)
+    domain = _query_domain(query)
+    if domain == "election":
+        candidate_ids = [i for i, chunk in enumerate(chunks) if chunk.get("source", "").lower().endswith(".csv")]
+    elif domain == "budget":
+        candidate_ids = [i for i, chunk in enumerate(chunks) if chunk.get("source", "").lower().endswith(".pdf")]
+    else:
+        candidate_ids = list(range(len(chunks)))
+
+    if not candidate_ids:
+        candidate_ids = list(range(len(chunks)))
+
+    candidate_vectors = [index.get("vectors", [])[i] for i in candidate_ids]
+    vec_scores, ids = search_index({"vectors": candidate_vectors}, query_vec, top_k=top_k * 3)
+
+    terms = _token_set(query)
+    election_hits = terms.intersection(ELECTION_TERMS)
+    budget_hits = terms.intersection(BUDGET_TERMS)
 
     retrieved: List[Dict] = []
     for vec_score, idx in zip(vec_scores, ids):
-        if idx < 0 or idx >= len(chunks):
+        if idx < 0 or idx >= len(candidate_ids):
             continue
-        chunk = chunks[int(idx)]
+        chunk_idx = candidate_ids[int(idx)]
+        chunk = chunks[chunk_idx]
         kw_score = keyword_overlap_score(query, chunk["text"])
-        final_score = hybrid_alpha * float(vec_score) + (1.0 - hybrid_alpha) * kw_score
+
+        source_boost = 0.0
+        source_path = str(chunk.get("source", "")).lower()
+        if source_path.endswith(".csv") and election_hits:
+            source_boost = 0.15 if domain == "election" else 0.08
+        elif source_path.endswith(".pdf") and budget_hits:
+            source_boost = 0.15 if domain == "budget" else 0.08
+
+        final_score = hybrid_alpha * float(vec_score) + (1.0 - hybrid_alpha) * kw_score + source_boost
         retrieved.append(
             {
                 **chunk,
