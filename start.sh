@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Initialize conda in non-interactive shells and activate rag_env if present
+if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
+  . /opt/conda/etc/profile.d/conda.sh
+  if conda env list | awk '{print $1}' | grep -q "^rag_env$"; then
+    conda activate rag_env
+  else
+    echo "Warning: conda environment 'rag_env' not found — continuing with base Python"
+  fi
+fi
+
 START_MODE="${START_MODE:-streamlit}"
 PORT="${PORT:-8501}"
 
