@@ -108,6 +108,7 @@ def retrieve(
     query: str,
     top_k: int,
     hybrid_alpha: float,
+    source_boosts: Dict[str, float] = None,
 ) -> List[Dict]:
     expanded = expand_query(query)
     query_vec = embedder.encode([expanded])
@@ -140,10 +141,19 @@ def retrieve(
 
         source_boost = 0.0
         source_path = str(chunk.get("source", "")).lower()
+        # default boost params
+        defaults = {
+            "primary": 0.15,
+            "secondary": 0.08,
+        }
+        sb = source_boosts or {}
+        primary = float(sb.get("primary", defaults["primary"]))
+        secondary = float(sb.get("secondary", defaults["secondary"]))
+
         if source_path.endswith(".csv") and election_hits:
-            source_boost = 0.15 if domain == "election" else 0.08
+            source_boost = primary if domain == "election" else secondary
         elif source_path.endswith(".pdf") and budget_hits:
-            source_boost = 0.15 if domain == "budget" else 0.08
+            source_boost = primary if domain == "budget" else secondary
 
         final_score = hybrid_alpha * float(vec_score) + (1.0 - hybrid_alpha) * kw_score + source_boost
         retrieved.append(

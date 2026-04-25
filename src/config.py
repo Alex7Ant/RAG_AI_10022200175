@@ -8,7 +8,7 @@ import os
 try:
     from dotenv import load_dotenv
 except Exception:
-    def load_dotenv() -> None:
+    def load_dotenv(*args, **kwargs) -> None:
         return None
 
 

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Unix / macOS helper: create conda env and install deps
+# Usage: bash scripts/env_setup_sh
+
+ENV_NAME=rag_env
+PY_VER=3.10
+
+echo "Creating conda environment '$ENV_NAME' with Python $PY_VER..."
+conda create -n "$ENV_NAME" python="$PY_VER" -y
+
+echo "Activating environment"
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate "$ENV_NAME"
+
+echo "Configuring conda-forge channel (env-only)"
+conda config --env --add channels conda-forge
+conda config --env --set channel_priority strict
+
+echo "Installing core binary packages via conda (numpy, pandas, scikit-learn, sentence-transformers, faiss-cpu)"
+conda install -y -c conda-forge numpy pandas scikit-learn sentence-transformers faiss-cpu || echo "Some conda packages may not be available on this platform (faiss-cpu). If installation fails, remove faiss-cpu and continue."
+
+echo "Installing PyTorch (CPU-only)"
+conda install -y -c pytorch cpuonly pytorch || echo "Failed to install cpu-only pytorch via conda; you can install appropriate PyTorch build manually if needed."
+
+echo "Upgrading pip and installing pip-only requirements"
+python -m pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
+
+echo "Installation complete. Verify environment with:"
+echo "  conda activate $ENV_NAME"
+echo "  python -V"
+echo "  pip list"
+echo "Run the Streamlit app: streamlit run app.py"

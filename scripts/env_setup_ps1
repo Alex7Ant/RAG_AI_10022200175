@@ -1,0 +1,32 @@
+# PowerShell script for Anaconda Prompt: create conda env and install deps
+# Usage: Open Anaconda Prompt (or PowerShell with conda available) and run:
+# .\scripts\env_setup_ps1
+
+$envName = "rag_env"
+$pyVersion = "3.10"
+
+Write-Host "Creating conda environment '$envName' with Python $pyVersion..."
+conda create -n $envName python=$pyVersion -y
+
+Write-Host "Activating environment"
+conda activate $envName
+
+Write-Host "Configuring conda-forge channel (env-only)"
+conda config --env --add channels conda-forge
+conda config --env --set channel_priority strict
+
+Write-Host "Installing core binary packages via conda (numpy, pandas, scikit-learn, sentence-transformers, faiss-cpu)"
+conda install -y -c conda-forge numpy pandas scikit-learn sentence-transformers faiss-cpu || Write-Host "Some conda packages may not be available on your platform (faiss-cpu). If installation fails, remove faiss-cpu and continue."
+
+Write-Host "Installing PyTorch (CPU-only)"
+conda install -y -c pytorch cpuonly pytorch || Write-Host "Failed to install cpu-only pytorch via conda; you can install appropriate PyTorch build manually if needed."
+
+Write-Host "Upgrading pip and installing pip-only requirements"
+python -m pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
+
+Write-Host "Installation complete. Verify environment with:"
+Write-Host "  conda activate $envName"
+Write-Host "  python -V"
+Write-Host "  pip list"
+Write-Host "Run the Streamlit app: streamlit run app.py"

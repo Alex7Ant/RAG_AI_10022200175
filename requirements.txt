@@ -1,10 +1,16 @@
+# Pip-only runtime dependencies. Heavy numeric packages are installed via conda (see scripts/env_setup_ps1).
 streamlit==1.44.1
-pandas==2.2.3
 pypdf==5.4.0
-sentence-transformers==3.4.1
-faiss-cpu==1.10.0
-numpy==2.2.4
-scikit-learn==1.6.1
 python-dotenv==1.1.0
 openai==1.74.0
 requests==2.32.3
+fastapi==0.95.2
+uvicorn[standard]==0.22.0
+
+# Heavy numeric / ML packages (required for local behaviour and for Streamlit Cloud deployments)
+# Note: on Windows we recommend installing these via conda to avoid MSVC build issues.
+numpy==2.2.6
+pandas==2.3.3
+scikit-learn==1.6.1
+sentence-transformers==3.4.1
+faiss-cpu==1.10.0

@@ -3,8 +3,6 @@
 
 from typing import Optional
 
-import requests
-from openai import OpenAI
 
 
 def _fallback_answer(prompt: str) -> str:
@@ -49,6 +47,7 @@ def ask_llm(
         if not openai_api_key:
             return _fallback_answer(prompt)
         try:
+            from openai import OpenAI
             client = OpenAI(api_key=openai_api_key)
             resp = client.chat.completions.create(
                 model=openai_model,
@@ -61,6 +60,7 @@ def ask_llm(
 
     if provider == "ollama":
         try:
+            import requests
             url = f"{ollama_base_url.rstrip('/')}/api/chat"
             payload = {
                 "model": ollama_model,
