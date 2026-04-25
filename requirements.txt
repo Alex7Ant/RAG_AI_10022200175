@@ -8,9 +8,7 @@ fastapi==0.95.2
 uvicorn[standard]==0.22.0
 
 # Heavy numeric / ML packages (required for local behaviour and for Streamlit Cloud deployments)
-# Note: on Windows we recommend installing these via conda to avoid MSVC build issues.
-numpy==2.2.6
-pandas==2.3.3
-scikit-learn==1.6.1
-sentence-transformers==3.4.1
-faiss-cpu==1.10.0
+# Heavy ML packages removed for Streamlit Cloud (can be installed via Conda or
+# used in the Container/Docker deployment). Options:
+# - Deploy to Render using the provided Conda-based Dockerfile (recommended),
+# - Or add these to a Conda environment locally / on your own server.
